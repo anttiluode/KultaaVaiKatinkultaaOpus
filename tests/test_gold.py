@@ -68,5 +68,18 @@ class Control(unittest.TestCase):
             e4_selfring.Net, e4_selfring.settle = old
 
 
+
+class SolCrossCheck(unittest.TestCase):
+    """E8: Sol's 33 stress patterns. Reproduce Sol's signed-pair score; the XOR wire does better."""
+    def test_signed_vs_xor_on_gn27(self):
+        import importlib, gn27, e8_sol_patterns as e8
+        e8.Net, e8.settle = gn27.Net, gn27.settle
+        pats = e8.sol_patterns()
+        signed = sum(e8.score(p, "signed")["mem_ok"] for p in pats)
+        xor = sum(e8.score(p, "xor")["mem_ok"] for p in pats)
+        self.assertEqual(signed, 22)
+        self.assertEqual(xor, 31)
+
+
 if __name__ == "__main__":
     unittest.main()

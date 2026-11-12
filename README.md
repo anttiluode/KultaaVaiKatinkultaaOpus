@@ -25,6 +25,39 @@ The gold is real, and it is in the **circuit**, not in the checkerboard. A ring 
 | E7 | Bank of rings, laps 20…40 ticks, one world | **the ring whose lap matches the world's period falls silent**: tempo read out by silence | same |
 | E7 | Period 36, three beats, 9-relay ring | **one beat leaks every 2 laps** and the error unit rewrites it, forever | no leak |
 
+## Round 2: cross-checking Sol and Gemini (E8, E9)
+
+Sol's repo [KultaaVaiKatinkultaa](https://github.com/anttiluode/KultaaVaiKatinkultaa) built the **signed pair** (an innovation unit at −5/+5 that writes, an omission unit at +5/−5 that erases, two wires into the ring) and stressed it on 33 patterns, including off-grid phases. E8 runs Sol's exact patterns, seed and scoring on both circuits:
+
+| Circuit | Source exact | **Memory exact** | Both |
+|---|---|---|---|
+| Sol's signed pair, GN27 | 20/33 | **22/33** (reproduces Sol's numbers exactly) | 14/33 |
+| One XOR wire, GN27 | 20/33 | **31/33** | 19/33 |
+| Signed pair, window neuron | 20/33 | **33/33** | 20/33 |
+| One XOR wire, window neuron | 20/33 | **33/33** | 20/33 |
+
+- **The single XOR wire is the better circuit on GN27.** One of its two misses (`[30]`) is slow convergence: it is locked from lap 3, and scoring starts at lap 2.
+- **Source failures are identical everywhere.** Pulses 2 ticks apart merge in the input relay before reaching any memory, as Sol said.
+- **The signed pair's failures are GN27-specific.** The window neuron does both circuits perfectly. Together with the E7 leak, that's two places where the geometry changes behaviour. In both, the change is a fault.
+
+**E9 asks why**, testing Gemini's explanation (the 50-tick variance memory makes units fatigue):
+
+| Failure | Any unit leaves its normal (damp) regime? | Verdict on "variance fatigue" |
+|---|---|---|
+| E7 leak, 9-relay ring | no, 0 ticks | **wrong** |
+| Signed pair, `[0,8,16,24]` and `[3,11,19,27]` | no, 0 ticks | **wrong** |
+| Signed pair, all 8 slots | yes, 17 ticks, with weak clock-like beats (0.56) | **right** here |
+
+Two more controls: a uniformly weaker beat wire, and beat sizes drawn at random from GN's observed values (1.76–2.00). Neither reproduces the signed failures. Random beat size does make the XOR wire miss 4 patterns, because −4.5 × 1.76 falls below the band. **Remaining candidate, not yet tested:** the receiver itself. A resting relay is never still (FACTS.md: square size flickers between 40 and 52), so where its band edge sits may depend on its recent past.
+
+**What I carry over:**
+- From **Sol**: the 33-pattern stress set, the scoring that separates source failures from memory failures, and the jitter result (Sol and I independently find ±1 tick breaks it).
+- From **Gemini**: the criticism that my control only covers the **relay regime** (constant 1.6, nothing on `signal_in`). That's correct. The window neuron replaces a GN27 relay in these circuits; it says nothing about the clock mode or `signal_in`, which it doesn't have. The claim is narrowed accordingly.
+
+**Corrections:**
+- **Mine, round 1:** I wrote that the +12 one-tick erase was "not proven in V27". It is: V27's README records it, 12 of 12 rings. I had only checked FACTS.md.
+- **Gemini's round-2 summary:** there is no OR setting in my sweep (−3.5 to −3.75 fires for nothing; −4.0 fires for exactly one input). Learning takes about two laps, not one. The leak was in E7 (three beats per 36 ticks), not a dense pattern in E5.
+
 ## Why it works: the band makes arithmetic mod 2
 
 When the error unit writes into a ring slot that is **empty**, the slot's drive is −12 (in the band): a beat is written. When the slot **already holds** a beat, the error's −12 adds to the neighbour's −12: −24, past the band, and the beat disappears. So a write is a toggle:
@@ -56,14 +89,14 @@ None of these are new ideas. What is specific is that one accidental 2025 node g
 **Verified (7 tests pass):** single band; XOR at −4.5 and AND at −2.5; world AND NOT ring at (−4.5, +5); selective erase by a positive pulse; self-writing ring learns, switches and stops; tempo bank picks the matching ring; window neuron reproduces 255/255.
 
 **Not established:**
-- That the checkerboard adds any capability. Every positive result reproduces without it.
+- That the checkerboard adds any capability **in the relay regime**. Every positive result there reproduces without it. The clock mode and `signal_in` are untested by the control.
 - Any tolerance to timing noise: ±1 tick breaks everything. Real input (taps, audio) would need quantising to the 4-tick grid first.
 - Learning of a rule or a period. The ring learns content, and the period is set by how many relays it has.
 - Anything about biology. The analogies (dendritic calcium spikes, mismatch neurons, comb filters) are of function, not mechanism.
 
 **Corrections to claims made today:**
 - Opus predicted the response might be periodic and allow 3-input parity: **wrong**, one band.
-- Gemini's "+12 erase was proven 12/12 in V27": not in V27's FACTS.md. Erasing does work (E3), now measured here.
+- Gemini's "+12 erase was proven 12/12 in V27": **correct** (V27 README). I first checked only FACTS.md and wrongly said otherwise; see Round 2.
 - Gemini's Kolmogorov-complexity reading: the ring length that silences the error measures the **period**, not Kolmogorov complexity.
 - Sol's report that naive feedback goes wrong on removed/added events: with the error unit writing into node 3 at −6, the naive version handled switching and stopping here. The difference may be weights or write position; worth comparing.
 
@@ -72,7 +105,7 @@ None of these are new ideas. What is specific is that one accidental 2025 node g
 The window neuron has no slow state. GN27 does: a 50-tick variance memory, a clock mode (constant 1.0), the four interleaved lanes, the leak seen in E7. Tests that could separate them:
 
 1. **Jitter.** Can a slow GN variable widen the coincidence window, so ±1 tick no longer breaks the ring? The window neuron cannot do that.
-2. **The leak.** E7's leak is the first GN-only behaviour. Is it noise, or a forgetting mechanism that could be put to use?
+2. **The receiver's resting flicker.** Both GN-only behaviours (E7 leak, signed-pair failures) survive the variance and beat-size explanations (E9). Test next: does the receiver's band edge move with its resting square size?
 3. **A clock unit as the world.** Can a 1.0 clock entrain a ring, or a ring entrain a clock?
 
 ## Run

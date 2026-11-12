@@ -1,0 +1,36 @@
+WINDOW control
+[0]                                src ok  | signed: mem ok  | xor: mem ok 
+[0, 16]                            src ok  | signed: mem ok  | xor: mem ok 
+[0, 8, 16, 24]                     src ok  | signed: mem ok  | xor: mem ok 
+[0, 2]                             src BAD  | signed: mem ok  | xor: mem ok 
+[0, 4]                             src ok  | signed: mem ok  | xor: mem ok 
+[0, 4, 8]                          src ok  | signed: mem ok  | xor: mem ok 
+[0, 4, 8, 12, 16, 20, 24, 28]      src ok  | signed: mem ok  | xor: mem ok 
+[0, 2, 4, 6]                       src BAD  | signed: mem ok  | xor: mem ok 
+[3, 11, 19, 27]                    src ok  | signed: mem ok  | xor: mem ok 
+[30]                               src ok  | signed: mem ok  | xor: mem ok 
+[16]                               src ok  | signed: mem ok  | xor: mem ok 
+[18]                               src ok  | signed: mem ok  | xor: mem ok 
+[12]                               src ok  | signed: mem ok  | xor: mem ok 
+[2, 4]                             src BAD  | signed: mem ok  | xor: mem ok 
+[16, 26]                           src ok  | signed: mem ok  | xor: mem ok 
+[8, 20]                            src ok  | signed: mem ok  | xor: mem ok 
+[22, 26]                           src ok  | signed: mem ok  | xor: mem ok 
+[4, 6, 24]                         src BAD  | signed: mem ok  | xor: mem ok 
+[14, 26, 30]                       src ok  | signed: mem ok  | xor: mem ok 
+[4, 20, 22]                        src BAD  | signed: mem ok  | xor: mem ok 
+[4, 18, 26]                        src ok  | signed: mem ok  | xor: mem ok 
+[12, 22, 24, 26]                   src BAD  | signed: mem ok  | xor: mem ok 
+[2, 10, 14, 20]                    src ok  | signed: mem ok  | xor: mem ok 
+[0, 20, 26, 28]                    src BAD  | signed: mem ok  | xor: mem ok 
+[4, 8, 18, 30]                     src ok  | signed: mem ok  | xor: mem ok 
+[6, 18, 20, 22, 30]                src BAD  | signed: mem ok  | xor: mem ok 
+[2, 8, 12, 24, 30]                 src ok  | signed: mem ok  | xor: mem ok 
+[2, 16, 20, 24, 30]                src ok  | signed: mem ok  | xor: mem ok 
+[4, 8, 10, 14, 22]                 src BAD  | signed: mem ok  | xor: mem ok 
+[0, 2, 4, 14, 20, 28]              src BAD  | signed: mem ok  | xor: mem ok 
+[2, 12, 18, 22, 26, 28]            src BAD  | signed: mem ok  | xor: mem ok 
+[0, 10, 14, 18, 26, 28]            src BAD  | signed: mem ok  | xor: mem ok 
+[4, 8, 14, 22, 24, 28]             src BAD  | signed: mem ok  | xor: mem ok 
+signed: source exact 20/33   memory exact 33/33   both 20/33
+xor   : source exact 20/33   memory exact 33/33   both 20/33

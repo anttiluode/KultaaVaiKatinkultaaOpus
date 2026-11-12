@@ -1,0 +1,18 @@
+[0, 8, 16, 24]               signed: misses 8 extras 0 | ticks any unit in amplify (var<0.1): 0 | beat-wire values seen: [np.float64(1.76), np.float64(1.88), np.float64(1.91), np.float64(1.95), np.float64(1.97), np.float64(2.0)]
+[0, 8, 16, 24]               xor   : misses 0 extras 0 | ticks any unit in amplify (var<0.1): 0 | beat-wire values seen: [np.float64(1.59), np.float64(1.85), np.float64(1.88), np.float64(1.91), np.float64(1.94), np.float64(1.97), np.float64(2.0)]
+[3, 11, 19, 27]              signed: misses 8 extras 0 | ticks any unit in amplify (var<0.1): 0 | beat-wire values seen: [np.float64(1.76), np.float64(1.85), np.float64(1.88), np.float64(1.91), np.float64(1.95), np.float64(1.97), np.float64(2.0)]
+[3, 11, 19, 27]              xor   : misses 0 extras 0 | ticks any unit in amplify (var<0.1): 0 | beat-wire values seen: [np.float64(1.59), np.float64(1.76), np.float64(1.85), np.float64(1.88), np.float64(1.91), np.float64(1.94), np.float64(1.95), np.float64(1.97), np.float64(2.0)]
+[0, 4, 8, 12, 16, 20, 24, 28] signed: misses 3 extras 1 | ticks any unit in amplify (var<0.1): 17 | beat-wire values seen: [np.float64(0.56), np.float64(0.67), np.float64(1.76), np.float64(1.82), np.float64(1.88), np.float64(1.91), np.float64(1.95), np.float64(1.97), np.float64(2.0)]
+[0, 4, 8, 12, 16, 20, 24, 28] xor   : misses 0 extras 0 | ticks any unit in amplify (var<0.1): 0 | beat-wire values seen: [np.float64(1.76), np.float64(1.88), np.float64(1.94), np.float64(1.97), np.float64(2.0)]
+
+window neuron with a fixed weaker beat wire (GN's wire ranges 1.76..2.00):
+  wire 2.0: memory exact  signed 33/33   xor 33/33
+  wire 1.88: memory exact  signed 33/33   xor 33/33
+  wire 1.76: memory exact  signed 33/33   xor 0/33
+
+E7 leak (9-relay ring, beats 0,8,20 per 36): error beats 32, ticks any unit in amplify: 0
+
+window neuron, each beat's wire drawn from GN's observed values {1.76,1.88,1.91,1.95,1.97,2.0}:
+  seed 1: memory exact  signed 33/33   xor 29/33
+  seed 2: memory exact  signed 33/33   xor 29/33
+  seed 3: memory exact  signed 33/33   xor 29/33
