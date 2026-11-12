@@ -1,0 +1,9 @@
+one seed, node beat times first lap: [[4, 36], [8, 40], [12, 44], [16, 48], [20, 52], [24, 56], [28, 60], [32, 64]]
+last-lap node0 beats: [356]
+beat reaches node4 at 84
+
+erase single beat: node4, offset vs beat arrival, magnitude m, width 2
+m=+ 4: offsets -8..+4 -> 1111011111111
+m=+ 8: offsets -8..+4 -> 1111011111111
+m=+12: offsets -8..+4 -> 1111011111111
+m=+20: offsets -8..+4 -> 1111011111111

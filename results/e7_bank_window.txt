@@ -1,0 +1,5 @@
+rings of [5, 6, 7, 8, 9, 10] relays = laps [20, 24, 28, 32, 36, 40] ticks; WINDOW control
+  period 28, one beat         : errors in 2nd half per ring {20: 40, 24: 40, 28: 0, 32: 40, 36: 40, 40: 39}
+  period 36, beats at 0,8,20  : errors in 2nd half per ring {20: 79, 24: 80, 28: 79, 32: 120, 36: 0, 40: 120}
+  period 24, one beat         : errors in 2nd half per ring {20: 40, 24: 0, 28: 39, 32: 40, 36: 40, 40: 40}
+  period 40, beats 0,12       : errors in 2nd half per ring {20: 80, 24: 79, 28: 40, 32: 80, 36: 79, 40: 0}

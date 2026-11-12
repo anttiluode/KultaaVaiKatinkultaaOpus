@@ -1,0 +1,22 @@
+truth table order: 00 10 01 11   (A=world, B=ring)
+wa= -4.5 wb=+1: 0100   lag+1: 0101  lag-? n/a
+wa= -4.5 wb=+2: 0100   lag+1: 0101  lag-? n/a
+wa= -4.5 wb=+3: 0100   lag+1: 0101  lag-? n/a
+wa= -4.5 wb=+4: 0100   lag+1: 0101  lag-? n/a
+wa= -4.5 wb=+5: 0100   lag+1: 0101  lag-? n/a
+wa= -4.5 wb=+6: 0100   lag+1: 0101  lag-? n/a
+wa= -4.5 wb=+8: 0100   lag+1: 0101  lag-? n/a
+wa= -5.0 wb=+1: 0101   lag+1: 0101  lag-? n/a
+wa= -5.0 wb=+2: 0100   lag+1: 0101  lag-? n/a
+wa= -5.0 wb=+3: 0100   lag+1: 0101  lag-? n/a
+wa= -5.0 wb=+4: 0100   lag+1: 0101  lag-? n/a
+wa= -5.0 wb=+5: 0100   lag+1: 0101  lag-? n/a
+wa= -5.0 wb=+6: 0100   lag+1: 0101  lag-? n/a
+wa= -5.0 wb=+8: 0100   lag+1: 0101  lag-? n/a
+wa= -6.0 wb=+1: 0101   lag+1: 0101  lag-? n/a
+wa= -6.0 wb=+2: 0101   lag+1: 0101  lag-? n/a
+wa= -6.0 wb=+3: 0100   lag+1: 0101  lag-? n/a
+wa= -6.0 wb=+4: 0100   lag+1: 0101  lag-? n/a
+wa= -6.0 wb=+5: 0100   lag+1: 0101  lag-? n/a
+wa= -6.0 wb=+6: 0100   lag+1: 0101  lag-? n/a
+wa= -6.0 wb=+8: 0100   lag+1: 0101  lag-? n/a
